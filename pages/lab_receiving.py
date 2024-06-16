@@ -107,7 +107,7 @@ layout = html.Div(
     ]
 )
 
-def check_ID(sc):
+def check_samplecode(sc):
     try:
         if receiving['sample_code'].tolist().index(sc) >= 0:
             output_text = "Sample Code Already Exist"
@@ -130,14 +130,10 @@ def run_process(btnclick,  cc, sc, de):
     try:
         if btnclick <= 1:
             try: 
-                if receiving['sample_code'].tolist().index(sc) >= 0:
-                    output_text = "Sample code already exist"
-                else:
-                    functions.add_receiving(cc, sc, de)
-                    output_text = "Data Submitted"
-            except:
                 functions.add_receiving(cc, sc, de)
-                output_text = "Data Submitted"                
+                output_text = "Data Submitted"
+            except:
+                output_text = "Sample code already exist. Use a different sample code."             
         else:
             output_text = "Click refresh page"
     except: 

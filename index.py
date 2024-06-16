@@ -2,11 +2,6 @@ import dash
 import dash_bootstrap_components as dbc
 import webbrowser
 from app import app
-# app = dash.Dash(
-#     __name__,
-#     use_pages=True,
-#     external_stylesheets=[dbc.themes.BOOTSTRAP],
-# )
 
 navbar = dbc.NavbarSimple(
     dbc.Nav(

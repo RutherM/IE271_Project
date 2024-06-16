@@ -41,7 +41,7 @@ def add_containers(sn, co, vo, ma):
 
 def add_samplers(si, sn, sg, sb, sa):
     sqlcode = """ INSERT INTO samplers (
-        id,
+        sampler_id,
         fullname,
         gender,
         bdate,

@@ -8,7 +8,7 @@ from dash.exceptions import PreventUpdate
 import pages.functions as functions
 
 container = functions.get_containers()[['code','date_prepared']]
-data = functions.get_data()[['container_code','sampling_desc','date_collected']]
+data = functions.get_data()[['container_code','address','sampling_desc','date_collected']]
 receiving = functions.get_receiving()[['container_code','sample_code','date_received']]
 
 dash.register_page(__name__)
@@ -47,7 +47,11 @@ layout = html.Div(
                                     dcc.Dropdown(
                                         id='param',
                                         searchable=True,
-                                        options = ['Calculate sampling to receiving time', 'Show sampling description'],
+                                        options = ['Calculate sampling to receiving time', 
+                                                   'Show sampling description',
+                                                   'Show sampling address',
+                                                   'Show date of collection',
+                                                   'Show container code'],
                                         style={'color': 'black'}
                                     ),
                                     width=5,
@@ -101,13 +105,21 @@ def run_process(btnclick,  sc, param):
         sc_index = receiving['sample_code'].tolist().index(sc)
         cc = receiving['container_code'].tolist()[sc_index]
         cc_index = data['container_code'].tolist().index(cc)
+
         if param == 'Calculate sampling to receiving time':
             time = receiving['date_received'][sc_index] - data['date_collected'][cc_index]
             output_text = "Elapsed time from collection to receiving in the laboratory is " + str(time)
         elif param == 'Show sampling description':
             output_text = str(data['sampling_desc'][cc_index])
+        elif param == 'Show sampling address':
+            output_text = str(data['address'][cc_index])
+        elif param == 'Show date of collection':
+            output_text = str(data['date_collected'][cc_index])
+        elif param == 'Show container code':
+            output_text = str(data['container_code'][cc_index])
         else:
             output_text = "Not Processed Yet"
+
     except: 
         output_text = "Not Processed Yet"
     return [output_text];

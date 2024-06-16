@@ -141,14 +141,10 @@ def run_process(btnclick,  se, co, vo, ma):
     try:
         if btnclick <= 1:
             try: 
-                if containers['code'].tolist().index(co) >= 0:
-                    output_text = "Code already exist"
-                else:
-                    functions.add_containers(se, co, vo, ma)
-                    output_text = "Data Submitted"
-            except:
                 functions.add_containers(se, co, vo, ma)
                 output_text = "Data Submitted"                
+            except:
+                output_text = "Container Code already exist. Use a different container code."
         else:
             output_text = "Click refresh page"
     except: 

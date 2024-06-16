@@ -156,14 +156,15 @@ def run_process(btnclick, si, sn, sg, sb, sa):
     try:
         if btnclick <= 1:
             try:
-                if samplers['id'].tolist().index(si) >= 0:
-                    output_text = "Sampler ID already exist"
-                else:
-                    functions.add_samplers(si, sn, sg, sb, sa)
-                    output_text = "Data Submitted"
-            except:
+                # if samplers['id'].tolist().index(si) >= 0:
+                #     output_text = "Sampler ID already exist"
+                # else:
                 functions.add_samplers(si, sn, sg, sb, sa)
-                output_text = "Data Submitted"                
+                output_text = "Data Submitted"
+            except:
+                output_text = "Sampler ID already exist. Use a different Sampler ID."
+                # functions.add_samplers(si, sn, sg, sb, sa)
+                # output_text = "Data Submitted"                
         else:
             output_text = "Click refresh page"
     except: 

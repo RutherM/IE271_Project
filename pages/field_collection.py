@@ -19,7 +19,7 @@ except:
     cc = 'Select from dropdown'
     tc = 'tray-001'
     mp = 'Select from dropdown'
-    rv = 0
+    rv = '0.00'
     co = 'latitude, longitude'
     ad = 'House no., street name, City, Province'
     sa = 'Example: Grab sampling at faucet during a sunny day'
@@ -218,8 +218,11 @@ def check_name(si):
 def run_process(btnclick, dp, si, cc, tc, iv, co, ad, sa):
     try:
         if btnclick <= 1:
-            functions.add_collected_data(si, cc, tc, dp, iv, co, ad, sa)
-            output_text = "Data Submitted"
+            try:
+                functions.add_collected_data(si, cc, tc, dp, iv, co, ad, sa)
+                output_text = "Data Submitted"
+            except:
+                output_text = "Container code already has data."
         else:
             output_text = "Click refresh page"
     except:

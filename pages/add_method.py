@@ -113,14 +113,15 @@ def run_process(btnclick,  mn, mp):
     try:
         if btnclick <= 1:
             try: 
-                if methods['name'].tolist().index(mn) >= 0:
-                    output_text = "Method Name already exist"
-                else:
-                    functions.add_methods(mn, mp)
-                    output_text = "Data Submitted"
-            except:
+                # if methods['name'].tolist().index(mn) >= 0:
+                #     output_text = "Method Name already exist"
+                # else:
                 functions.add_methods(mn, mp)
-                output_text = "Data Submitted"                
+                output_text = "Data Submitted"
+            except:
+                output_text = "Method Name already exist. Use a different method name."
+                # functions.add_methods(mn, mp)
+                # output_text = "Data Submitted"                
         else:
             output_text = "Click refresh page"
     except: 
